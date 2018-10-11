@@ -1,0 +1,20 @@
+{
+  "name": "starter-angular",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel public/index.html --port 4000",
+    "prebuild": "del-cli dist",
+    "build": "parcel build public/index.html"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-plugin-angularjs-annotate": "0.9.0",
+    "del-cli": "1.1.0",
+    "parcel-bundler": "1.10.2"
+  },
+  "dependencies": {
+    "angular": "1.7.5"
+  }
+}
