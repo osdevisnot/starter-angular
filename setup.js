@@ -20,17 +20,9 @@ const fromRoot = file => path.join(cwd, file)
 fs.writeFileSync(fromRoot('README.md'), `#${name}\n\n`, 'utf-8')
 
 /**
- * ReWrite a package.json file
- * Change package name and remove devDependencies while re-writing
- */
-const pkg = require('./package.json')
-pkg.name = name
-fs.writeFileSync(fromRoot('package.json'), JSON.stringify(pkg, null, '  ') + '\n', 'utf-8')
-
-/**
  * Rewrite files replacing starter name
  */
-const rewriteFiles = ['public/index.html', 'public/manifest.json', 'src/index.js']
+const rewriteFiles = ['public/index.html', 'public/manifest.json', 'src/index.js', 'package.json']
 rewriteFiles.forEach(file => {
   const content = fs.readFileSync(fromRoot(file), 'utf-8')
   fs.writeFileSync(fromRoot(file), content.replace(/starter-angular/g, name), 'utf-8')
@@ -39,7 +31,7 @@ rewriteFiles.forEach(file => {
 /**
  * Remove Files and Self destruct
  */
-const files = ['yarn.lock', '.travis.yml', '.gitignore', '.prettierrc', 'setup.js']
+const files = ['.travis.yml', '.gitignore', '.prettierrc', 'setup.js']
 files.forEach(file => fs.unlinkSync(fromRoot(file)))
 
 /**
