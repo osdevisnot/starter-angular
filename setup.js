@@ -38,6 +38,9 @@ files.forEach(file => fs.unlinkSync(fromRoot(file)))
  * Add latest devDependencies and initialize git repo
  */
 const commands = ['git add .', 'git commit -am "first commit from starter-angular"', 'npm install']
+if (!fs.existsSync('.git')) {
+  commands.unshift('git init')
+}
 commands.forEach(command => {
   console.log(`----- Executing Command -----> ${command}`)
   sync(command, { stdio: [0, 1, 2] })
